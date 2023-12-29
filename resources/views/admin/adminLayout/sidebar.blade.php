@@ -18,7 +18,16 @@
               <i class="bi bi-file-earmark"></i>
               <span>Banner</span>
             </a>
-          </li><!-- End Blank Page Nav -->
+        </li>
+        <!-- End Banner Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/learning-resource">
+              <i class="bi bi-file-earmark"></i>
+              <span>Learning Resource</span>
+            </a>
+        </li>
+        <!-- End Banner Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">

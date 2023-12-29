@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Hero;
+use App\Models\Learning;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class HeroController extends Controller
+class LearningController extends Controller
 {
     public function index()
     {
-        $heroes = Hero::all();
-        return view("admin.hero.index", ["heroes" => $heroes]);
+        $learnings = Learning::all();
+        return view("admin.learning-resource.index", ["learnings" => $learnings]);
     }
 
     public function create()
     {
-        return view("admin.hero.add");
+        return view("admin.learning-resource.add");
     }
 
     public function store(Request $request)
@@ -28,26 +28,26 @@ class HeroController extends Controller
             "description" => "required"
         ]);
 
-        $saveImage['image'] = Storage::putFile('public/heroes', $request->file('image'));
+        $saveImage['image'] = Storage::putFile('public/learning-resource', $request->file('image'));
 
-        Hero::create([
+        Learning::create([
             "image" =>  $saveImage["image"],
             "title" => $validated["title"],   
             "description" => $validated["description"]     
         ]);
 
-        return redirect('/admin/hero');
+        return redirect('/admin/learning-resource');
     }
 
     public function show(string $id)
     {
-        $heroes = Hero::findOrFail($id);
-        return view('admin.hero.edit', ['hero' => $heroes]);
+        $learnings = Learning::findOrFail($id);
+        return view('admin.learning-resource.edit', ['learning' => $learnings]);
     }
 
     public function update(Request $request, string $id)
     {
-        $heroes = Hero::findOrFail($id);
+        $learnings = Learning::findOrFail($id);
         $validated = $request->validate([
             'title' => 'string',
             'description' => 'string',
@@ -55,27 +55,24 @@ class HeroController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            Storage::delete($heroes->image);
-            $newImage = ['image' => Storage::putFile('public/heroes', $request->file('image'))];
+            Storage::delete($learnings->image);
+            $newImage = ['image' => Storage::putFile('public/learning-resource', $request->file('image'))];
         } else {
-            $newImage = ['image' => $heroes-> image];
+            $newImage = ['image' => $learnings-> image];
         }
 
-        Hero::where('id', $id)->update([
+        Learning::where('id', $id)->update([
             'title' => $validated['title'],
             'description' => $validated['description'],
             'image' => $newImage['image']
         ]);
 
-        return redirect('/admin/hero');
+        return redirect('/admin/learning-resource');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        Hero::destroy($id);
-        return redirect('/admin/hero');
+        Learning::destroy($id);
+        return redirect('/admin/learning-resource');
     }
 }

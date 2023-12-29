@@ -1,32 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\api;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\HeroResource;
-use App\Models\Hero;
+use App\Http\Resources\LearningResource;
+use App\Models\Learning;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-//import Facade "Validator"
 use Illuminate\Support\Facades\Validator;
 
-class HeroController extends Controller
+class LearningController extends Controller
 {
-    /**
-     * index
-     *
-     * @return void
-     */
     public function index()
     {
         //get all posts
-        $heroes = Hero::latest()->paginate(5);
-
+        $learnings = Learning::latest()->paginate(5);
         //return collection of heroes as a resource
-        return new HeroResource(true, 'List Data heroes', $heroes);
+        return new LearningResource(true, 'List Data Learning Resource', $learnings);
     }
 
-    /**
+     /**
      * store
      *
      * @param  mixed $request
@@ -48,23 +41,23 @@ class HeroController extends Controller
 
         //upload image
         $image = $request->file('image');
-        $image->storeAs('public/heroes', $image->hashName());
+        $image->storeAs('public/learning-resource', $image->hashName());
 
         //create post
-        $heroes = Hero::create([
+        $learnings = Learning::create([
             'image'     => $image->hashName(),
             'title'     => $request->title,
             'description'   => $request->description,
         ]);
 
         //return response
-        return new HeroResource(true, 'Data Post Berhasil Ditambahkan!', $heroes);
+        return new LearningResource(true, 'Data Learning Resource Berhasil Ditambahkan!', $learnings);
     }
 
     public function show($id)
     {
-        $heroes = Hero::find($id);
-        return new HeroResource(true, 'Detail Data Hero!', $heroes);
+        $learnings = Learning::find($id);
+        return new LearningResource(true, 'Detail Data Learning Resource!', $learnings);
     }
 
     public function update(Request $request, $id)
@@ -78,38 +71,38 @@ class HeroController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $heroes = Hero::find($id);
+        $learnings = Learning::find($id);
 
         if ($request->hasFile('image')){
             $image = $request->file('image');
-            $image->storeAs('public/heroes', $image->hashName());
+            $image->storeAs('public/learning-resource', $image->hashName());
 
-            Storage::delete('public/heroes/'.basename($heroes->image));
+            Storage::delete('public/learning-resource/'.basename($learnings->image));
 
-            $heroes->update([
+            $learnings->update([
                 'image' => $image->hashName(),
                 'title' => $request->title,
                 'description' => $request->description,
             ]);
         
         } else {
-            $heroes->update([
+            $learnings->update([
                 'title'         => $request->title,
                 'description'   => $request->description,
             ]);
         }
 
-        return new HeroResource(true, 'Data Hero Berhasil Diubah', $heroes);
+        return new LearningResource(true, 'Data Learning Resource Berhasil Diubah', $learnings);
     }
 
     public function destroy($id)
     {
-        $heroes = Hero::find($id);
+        $learnings = Learning::find($id);
 
-        Storage::delete('public/heroes/'.basename($heroes->image));
+        Storage::delete('public/learning-resource/'.basename($learnings->image));
 
-        $heroes->delete();
+        $learnings->delete();
 
-        return new HeroResource(true, 'Data Hero Berhasil Dihapus!', null);
+        return new LearningResource(true, 'Data Learning Resource Berhasil Dihapus!', null);
     }
 }
