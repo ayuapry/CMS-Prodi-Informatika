@@ -82,9 +82,9 @@ class HeroController extends Controller
 
         if ($request->hasFile('image')){
             $image = $request->file('image');
-            $image->storeAs('public/heroes', $image->hashName());
+            $image->storeAs('public/image', $image->hashName());
 
-            Storage::delete('public/heroes/'.basename($heroes->image));
+            Storage::delete('public/image/'.basename($heroes->image));
 
             $heroes->update([
                 'image' => $image->hashName(),
@@ -106,7 +106,7 @@ class HeroController extends Controller
     {
         $heroes = Hero::find($id);
 
-        Storage::delete('public/heroes/'.basename($heroes->image));
+        Storage::delete('public/image/'.basename($heroes->image));
 
         $heroes->delete();
 
