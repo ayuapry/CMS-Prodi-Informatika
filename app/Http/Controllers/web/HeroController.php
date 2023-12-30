@@ -22,19 +22,22 @@ class HeroController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            "image" => "required|image|mimes:jpg,jpeg,png",
-            "title" => "required",
-            "description" => "required"
+        $this->validate($request, [
+            'image'     => 'required|image|mimes:jpeg,jpg,png',
+            'title'     => 'required',
+            'description'   => 'required'
         ]);
 
-        $saveImage['image'] = Storage::putFile('public/heroes', $request->file('image'));
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs('public/heroes', $image->hashName());
 
         Hero::create([
-            "image" =>  $saveImage["image"],
-            "title" => $validated["title"],   
-            "description" => $validated["description"]     
+            'image'         => $image->hashName(),
+            'title'         => $request->title,
+            'description'   => $request->description
         ]);
+
 
         return redirect('/admin/hero');
     }
@@ -47,25 +50,40 @@ class HeroController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $this->validate($request, [
+            'image'     => 'mimes:jpeg,jpg,png',
+            'title'     => 'string',
+            'description'   => 'string'
+        ]);
+
+        //get post by ID
         $heroes = Hero::findOrFail($id);
-        $validated = $request->validate([
-            'title' => 'string',
-            'description' => 'string',
-            'image' => 'mimes:jpg,jpeg,png'
-        ]);
 
+        //check if image is uploaded
         if ($request->hasFile('image')) {
-            Storage::delete($heroes->image);
-            $newImage = ['image' => Storage::putFile('public/heroes', $request->file('image'))];
-        } else {
-            $newImage = ['image' => $heroes-> image];
-        }
 
-        Hero::where('id', $id)->update([
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'image' => $newImage['image']
-        ]);
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/heroes', $image->hashName());
+
+            //delete old image
+            Storage::delete('public/heroes/'.$heroes->image);
+
+            //update post with new image
+            $heroes->update([
+                'image'     => $image->hashName(),
+                'title'     => $request->title,
+                'description'   => $request->description
+            ]);
+
+        } else {
+
+            //update post without image
+            $heroes->update([
+                'title'     => $request->title,
+                'description'   => $request->description
+            ]);
+        }
 
         return redirect('/admin/hero');
     }
@@ -75,7 +93,14 @@ class HeroController extends Controller
      */
     public function destroy(string $id)
     {
-        Hero::destroy($id);
+        $heroes = Hero::findOrFail($id);
+
+        //delete image
+        Storage::delete('public/heroes/'. $heroes->image);
+
+        //delete post
+        $heroes->delete();
+
         return redirect('/admin/hero');
     }
 }

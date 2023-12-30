@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\web;
-
 use App\Http\Controllers\Controller;
 use App\Models\Learning;
 use Illuminate\Http\Request;
@@ -22,18 +20,20 @@ class LearningController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            "image" => "required|image|mimes:jpg,jpeg,png",
-            "title" => "required",
-            "description" => "required"
+        $this->validate($request, [
+            'image'     => 'required|image|mimes:jpeg,jpg,png',
+            'title'     => 'required',
+            'description'   => 'required'
         ]);
 
-        $saveImage['image'] = Storage::putFile('public/learning-resource', $request->file('image'));
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs('public/learning-resource', $image->hashName());
 
         Learning::create([
-            "image" =>  $saveImage["image"],
-            "title" => $validated["title"],   
-            "description" => $validated["description"]     
+            'image'         => $image->hashName(),
+            'title'         => $request->title,
+            'description'   => $request->description
         ]);
 
         return redirect('/admin/learning-resource');
@@ -47,32 +47,52 @@ class LearningController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $this->validate($request, [
+            'image'     => 'mimes:jpeg,jpg,png',
+            'title'     => 'string',
+            'description'   => 'string'
+        ]);
+
+        //get post by ID
         $learnings = Learning::findOrFail($id);
-        $validated = $request->validate([
-            'title' => 'string',
-            'description' => 'string',
-            'image' => 'mimes:jpg,jpeg,png'
-        ]);
 
+        //check if image is uploaded
         if ($request->hasFile('image')) {
-            Storage::delete($learnings->image);
-            $newImage = ['image' => Storage::putFile('public/learning-resource', $request->file('image'))];
-        } else {
-            $newImage = ['image' => $learnings-> image];
-        }
 
-        Learning::where('id', $id)->update([
-            'title' => $validated['title'],
-            'description' => $validated['description'],
-            'image' => $newImage['image']
-        ]);
+            //upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/learning-resource', $image->hashName());
+
+            //delete old image
+            Storage::delete('public/learning-resource/'.$learnings->image);
+
+            //update post with new image
+            $learnings->update([
+                'image'     => $image->hashName(),
+                'title'     => $request->title,
+                'description'   => $request->description
+            ]);
+
+        } else {
+
+            //update post without image
+            $learnings->update([
+                'title'     => $request->title,
+                'description'   => $request->description
+            ]);
+        }
 
         return redirect('/admin/learning-resource');
     }
 
     public function destroy(string $id)
     {
-        Learning::destroy($id);
+        $learnings = Learning::findOrFail($id);
+
+        //delete image
+        Storage::delete('public/learning-resource/'. $learnings->image);
+        //delete learning-resource
+        $learnings->delete();
         return redirect('/admin/learning-resource');
     }
 }
