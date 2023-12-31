@@ -20,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('/heroes', App\Http\Controllers\Api\HeroController::class);
 Route::apiResource('/learnings', App\Http\Controllers\api\LearningController::class);
+Route::apiResource('/our-partners', App\Http\Controllers\api\OurPartnerController::class);
+

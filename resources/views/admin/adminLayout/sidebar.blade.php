@@ -27,7 +27,15 @@
               <span>Learning Resource</span>
             </a>
         </li>
-        <!-- End Banner Nav -->
+        <!-- End Learning Resource Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/our-partner">
+              <i class="bi bi-file-earmark"></i>
+              <span>Our Partner</span>
+            </a>
+        </li>
+        <!-- End Our Partner Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">

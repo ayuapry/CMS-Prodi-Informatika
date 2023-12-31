@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LearningController;
+use App\Http\Controllers\web\OurPartnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,13 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/learning-resource/{id}/edit", [LearningController::class, "show"]);
         Route::put("/learning-resource/{id}", [LearningController::class, "update"]);
         Route::get("/learning-resource/{id}/delete", [LearningController::class, "destroy"]);
+
+        //our-partner
+        Route::get("/our-partner", [OurPartnerController::class, "index"]);
+        Route::get("/our-partner/add", [OurPartnerController::class, "create"]);
+        Route::post("/our-partner", [OurPartnerController::class, "store"]);
+        Route::get("/our-partner/{id}/edit", [OurPartnerController::class, "show"]);
+        Route::put("/our-partner/{id}", [OurPartnerController::class, "update"]);
+        Route::get("/our-partner/{id}/delete", [OurPartnerController::class, "destroy"]);
     }
 );
