@@ -8,10 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Accreditation extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
+        'image',
         'title',
         'description',
-        'file_path',
     ];
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => asset('storage/accreditations/' .$image),
+        );
+    }
 }

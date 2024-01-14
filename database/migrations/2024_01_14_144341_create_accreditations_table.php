@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('accreditations', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->string('file_path');
+            $table->string('description');
+            $table->string('image');
             $table->timestamps();
         });
     }

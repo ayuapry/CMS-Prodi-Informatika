@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\web\AccreditationController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LearningController;
 use App\Http\Controllers\web\OurPartnerController;
@@ -55,5 +56,13 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/our-partner/{id}/edit", [OurPartnerController::class, "show"]);
         Route::put("/our-partner/{id}", [OurPartnerController::class, "update"]);
         Route::get("/our-partner/{id}/delete", [OurPartnerController::class, "destroy"]);
+
+        //Accreditations
+        Route::get("/accreditation", [AccreditationController::class, "index"]);
+        Route::get("/accreditation/add", [AccreditationController::class, "create"]);
+        Route::post("/accreditation", [AccreditationController::class, "store"]);
+        Route::get("/accreditation/{id}/edit", [AccreditationController::class, "show"]);
+        Route::put("/accreditation/{id}", [AccreditationController::class, "update"]);
+        Route::get("/accreditation/{id}/delete", [AccreditationController::class, "destroy"]);
     }
 );

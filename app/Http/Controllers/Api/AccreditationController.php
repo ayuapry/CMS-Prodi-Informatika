@@ -11,40 +11,66 @@ use Illuminate\Support\Facades\Validator;
 
 class AccreditationController extends Controller
 {
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'file' => 'required|file|mimes:pdf,jpg,jpeg,png',
-        ]);
-
-        // Handle file upload
-        $file = $request->file('file');
-        $filePath = $file->storeAs('public/accreditations', $file->hashName());
-
-        // Create accreditation
-        $accreditation = Accreditation::create([
-            'title' => $request->input('title'),
-            'description' => $request->input('description'),
-            'file_path' => $filePath,
-        ]);
-
-        return response()->json($accreditation, 201);
-    }
-
+  /**
+     * index
+     *
+     * @return void
+     */
     public function index()
     {
-        $accreditations = Accreditation::all();
+        //get all posts
+        $accreditations = Accreditation::latest()->paginate(5);
 
-        return new AccreditationResource(true, 'List Data Accreditation', $accreditations);
+        //return collection of accreditations as a resource
+        return new AccreditationResource(true, 'List Data accreditations', $accreditations);
+    }
+    
+    /**
+     * store
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function store(Request $request)
+    {
+        //define validation rules
+        $validator = Validator::make($request->all(), [
+            'image'     => 'required|image|mimes:jpeg,png,jpg,pdf',
+            'title'     => 'required',
+            'description'   => 'required',
+        ]);
+
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        //upload image
+        $image = $request->file('image');
+        $image->storeAs('public/accreditations', $image->hashName());
+
+        //create post
+        $accreditations = Accreditation::create([
+            'image'     => $image->hashName(),
+            'title'     => $request->title,
+            'description'   => $request->description,
+        ]);
+
+        //return response
+        return new AccreditationResource(true, 'Data Akreditasi Berhasil Ditambahkan!', $accreditations);
+    }
+
+    public function show($id)
+    {
+        $accreditations = Accreditation::find($id);
+        return new AccreditationResource(true, 'Detail Data Accreditation!', $accreditations);
     }
 
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
+            'title' => 'required',
+            'description' => 'required',
         ]);
 
         if ($validator->fails()){
@@ -53,14 +79,14 @@ class AccreditationController extends Controller
 
         $accreditations = Accreditation::find($id);
 
-        if ($request->hasFile('file')){
-            $file = $request->file('file');
-            $file->storeAs('public/accreditations', $file->hashName());
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $image->storeAs('public/accreditations', $image->hashName());
 
-            Storage::delete('public/accreditations/'.basename($accreditations->file));
+            Storage::delete('public/accreditations/'.basename($accreditations->image));
 
             $accreditations->update([
-                'file_path' => $file->storeAs('public/accreditations', $file->hashName()),
+                'image' => $image->hashName(),
                 'title' => $request->title,
                 'description' => $request->description,
             ]);
@@ -71,18 +97,19 @@ class AccreditationController extends Controller
                 'description'   => $request->description,
             ]);
         }
+
         return new AccreditationResource(true, 'Data Akreditasi Berhasil Diubah', $accreditations);
     }
-
 
     public function destroy($id)
     {
         $accreditations = Accreditation::find($id);
 
-        Storage::delete('public/accreditations/'.basename($accreditations->file));
+        Storage::delete('public/accreditations/'.basename($accreditations->image));
 
         $accreditations->delete();
 
         return new AccreditationResource(true, 'Data Akreditasi Berhasil Dihapus!', null);
     }
+
 }
