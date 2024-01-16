@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\web\AccreditationController;
+use App\Http\Controllers\web\CallToActionController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LearningController;
 use App\Http\Controllers\web\OurPartnerController;
@@ -64,5 +65,13 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/accreditation/{id}/edit", [AccreditationController::class, "show"]);
         Route::put("/accreditation/{id}", [AccreditationController::class, "update"]);
         Route::get("/accreditation/{id}/delete", [AccreditationController::class, "destroy"]);
+
+        //CallToAction
+        Route::get("/call-to-action", [CallToActionController::class, "index"]);
+        Route::get("/call-to-action/add", [CallToActionController::class, "create"]);
+        Route::post("/call-to-action", [CallToActionController::class, "store"]);
+        Route::get("/call-to-action/{id}/edit", [CallToActionController::class, "show"]);
+        Route::put("/call-to-action/{id}", [CallToActionController::class, "update"]);
+        Route::get("/call-to-action/{id}/delete", [CallToActionController::class, "destroy"]);
     }
 );

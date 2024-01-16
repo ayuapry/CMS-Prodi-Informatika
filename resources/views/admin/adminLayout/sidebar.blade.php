@@ -30,6 +30,14 @@
         <!-- End Learning Resource Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/call-to-action">
+              <i class="bi bi-file-earmark"></i>
+              <span>Call To Action</span>
+            </a>
+        </li>
+        <!-- End Accreditation Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/accreditation">
               <i class="bi bi-file-earmark"></i>
               <span>Accreditation</span>
