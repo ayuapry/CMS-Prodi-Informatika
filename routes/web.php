@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\web\AccreditationController;
+use App\Http\Controllers\web\BlogController;
 use App\Http\Controllers\web\CallToActionController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LearningController;
@@ -73,5 +74,14 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/call-to-action/{id}/edit", [CallToActionController::class, "show"]);
         Route::put("/call-to-action/{id}", [CallToActionController::class, "update"]);
         Route::get("/call-to-action/{id}/delete", [CallToActionController::class, "destroy"]);
+
+        //CallToAction
+        Route::get("/blog", [BlogController::class, "index"]);
+        Route::get("/blog/add", [BlogController::class, "create"]);
+        Route::post("/blog", [BlogController::class, "store"]);
+        Route::get("/blog/{id}/edit", [BlogController::class, "show"]);
+        Route::put("/blog/{id}", [BlogController::class, "update"]);
+        Route::get("/blog/{id}/delete", [BlogController::class, "destroy"]);
+
     }
 );

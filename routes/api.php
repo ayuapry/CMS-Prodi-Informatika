@@ -23,5 +23,6 @@ Route::apiResource('/learnings', App\Http\Controllers\api\LearningController::cl
 Route::apiResource('/our-partners', App\Http\Controllers\api\OurPartnerController::class);
 Route::apiResource('/accreditations', App\Http\Controllers\api\AccreditationController::class);
 Route::apiResource('/call_to_actions', App\Http\Controllers\api\CallToActionController::class);
+Route::apiResource('/blogs', App\Http\Controllers\api\BlogController::class);
 
 

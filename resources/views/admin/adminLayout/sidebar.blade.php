@@ -38,6 +38,14 @@
         <!-- End Accreditation Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/blog">
+              <i class="bi bi-file-earmark"></i>
+              <span>Blog</span>
+            </a>
+        </li>
+        <!-- End Accreditation Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/accreditation">
               <i class="bi bi-file-earmark"></i>
               <span>Accreditation</span>

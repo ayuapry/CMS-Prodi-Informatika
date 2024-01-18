@@ -20,7 +20,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Data Accreditation</h5>
-                    <a type="button" class="btn btn-primary m-2" href="/admin/accreditation/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Accreditation</a>
+                    @if ($accreditations -> isEmpty()) 
+                        <a type="button" class="btn btn-primary m-2" href="/admin/accreditation/add"><i class="bi bi-plus-square-fill"></i>Tambah Data Accreditation</a>
+                    @else
+                        <a type="button" class="btn btn-primary m-2 disabled" href="/admin/accreditation/add"><i class="bi bi-plus-square-fill"></i>Tambah Data Accreditation</a>
+                    @endif
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>
