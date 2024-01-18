@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Data Blog</h5>
-                    <a type="button" class="btn btn-primary m-2" href="/admin/blog/add"><i class="bi bi-plus-square-fill"></i>Tambah Data Blog</a>
+                    <a type="button" class="btn btn-primary m-2" href="/admin/blog/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Blog</a>
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

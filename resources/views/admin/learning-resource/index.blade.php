@@ -1,5 +1,5 @@
 @extends('admin.adminLayout.app')
-@section('title', 'Banner')
+@section('title', 'Learning Resource')
 @section('content')
 
 <div class="pagetitle">

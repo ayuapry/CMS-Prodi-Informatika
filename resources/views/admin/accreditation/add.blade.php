@@ -55,11 +55,10 @@
                                         name="image">
                                 </div>
                             </div>
-            
-                            <div class="row mb-3">
-                                <label class="col-sm-2 col-form-label">Submit Button</label>
+                            
+                            <div class=" mb-3" style='float: right;'>
+                                <button type="submit" class="btn btn-primary">Submit Form</button>
                                 <div class="col-sm-10">
-                                    <button type="submit" class="btn btn-primary">Submit Form</button>
                                 </div>
                             </div>
                         </form><!-- End General Form Elements -->
