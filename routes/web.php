@@ -7,6 +7,7 @@ use App\Http\Controllers\web\AccreditationController;
 use App\Http\Controllers\web\BlogController;
 use App\Http\Controllers\web\CallToActionController;
 use App\Http\Controllers\web\HeroController;
+use App\Http\Controllers\web\LaboratoryController;
 use App\Http\Controllers\web\LearningController;
 use App\Http\Controllers\web\OurPartnerController;
 
@@ -82,6 +83,14 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/blog/{id}/edit", [BlogController::class, "show"]);
         Route::put("/blog/{id}", [BlogController::class, "update"]);
         Route::get("/blog/{id}/delete", [BlogController::class, "destroy"]);
+
+        //Laboratory
+        Route::get("/laboratory", [LaboratoryController::class, "index"]);
+        Route::get("/laboratory/add", [LaboratoryController::class, "create"]);
+        Route::post("/laboratory", [LaboratoryController::class, "store"]);
+        Route::get("/laboratory/{slug}/edit", [LaboratoryController::class, "show"]);
+        Route::put("/laboratory/{id}", [LaboratoryController::class, "update"]);
+        Route::get("/laboratory/{slug}/delete", [LaboratoryController::class, "destroy"]);
 
     }
 );

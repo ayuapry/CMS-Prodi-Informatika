@@ -30,6 +30,14 @@
         <!-- End Learning Resource Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/laboratory">
+              <i class="bi bi-file-earmark"></i>
+              <span>Laboratory</span>
+            </a>
+        </li>
+        <!-- End Laboratory Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/call-to-action">
               <i class="bi bi-file-earmark"></i>
               <span>Call To Action</span>
