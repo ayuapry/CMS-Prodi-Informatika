@@ -10,6 +10,7 @@ use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LaboratoryController;
 use App\Http\Controllers\web\LearningController;
 use App\Http\Controllers\web\OurPartnerController;
+use App\Http\Controllers\web\TeachingStaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,5 +93,12 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::put("/laboratory/{id}", [LaboratoryController::class, "update"]);
         Route::get("/laboratory/{slug}/delete", [LaboratoryController::class, "destroy"]);
 
+         //Laboratory
+         Route::get("/teaching-staff", [TeachingStaffController::class, "index"]);
+         Route::get("/teaching-staff/add", [TeachingStaffController::class, "create"]);
+         Route::post("/teaching-staff", [TeachingStaffController::class, "store"]);
+         Route::get("/teaching-staff/{slug}/edit", [TeachingStaffController::class, "show"]);
+         Route::put("/teaching-staff/{id}", [TeachingStaffController::class, "update"]);
+         Route::get("/teaching-staff/{slug}/delete", [TeachingStaffController::class, "destroy"]);
     }
 );
