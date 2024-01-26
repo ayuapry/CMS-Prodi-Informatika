@@ -10,6 +10,7 @@ use App\Http\Controllers\web\CallToActionController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LaboratoryController;
 use App\Http\Controllers\web\LearningController;
+use App\Http\Controllers\web\OrganizationController;
 use App\Http\Controllers\web\OurPartnerController;
 use App\Http\Controllers\web\TeachingStaffController;
 
@@ -94,20 +95,28 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::put("/laboratory/{id}", [LaboratoryController::class, "update"]);
         Route::get("/laboratory/{slug}/delete", [LaboratoryController::class, "destroy"]);
 
-        //Laboratory
+        //Teaching Staff
         Route::get("/teaching-staff", [TeachingStaffController::class, "index"]);
         Route::get("/teaching-staff/add", [TeachingStaffController::class, "create"]);
         Route::post("/teaching-staff", [TeachingStaffController::class, "store"]);
-        Route::get("/teaching-staff/{slug}/edit", [TeachingStaffController::class, "show"]);
+        Route::get("/teaching-staff/{id}/edit", [TeachingStaffController::class, "show"]);
         Route::put("/teaching-staff/{id}", [TeachingStaffController::class, "update"]);
-        Route::get("/teaching-staff/{slug}/delete", [TeachingStaffController::class, "destroy"]);
+        Route::get("/teaching-staff/{id}/delete", [TeachingStaffController::class, "destroy"]);
 
         //Achievment
         Route::get("/achievment", [AchievmentController::class, "index"]);
         Route::get("/achievment/add", [AchievmentController::class, "create"]);
         Route::post("/achievment", [AchievmentController::class, "store"]);
-        Route::get("/achievment/{slug}/edit", [AchievmentController::class, "show"]);
+        Route::get("/achievment/{id}/edit", [AchievmentController::class, "show"]);
         Route::put("/achievment/{id}", [AchievmentController::class, "update"]);
-        Route::get("/achievment/{slug}/delete", [AchievmentController::class, "destroy"]);
+        Route::get("/achievment/{id}/delete", [AchievmentController::class, "destroy"]);
+
+        //Organization
+        Route::get("/organization", [OrganizationController::class, "index"]);
+        Route::get("/organization/add", [OrganizationController::class, "create"]);
+        Route::post("/organization", [OrganizationController::class, "store"]);
+        Route::get("/organization/{id}/edit", [OrganizationController::class, "show"]);
+        Route::put("/organization/{id}", [OrganizationController::class, "update"]);
+        Route::get("/organization/{id}/delete", [OrganizationController::class, "destroy"]);
     }
 );

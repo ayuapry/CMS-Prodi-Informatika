@@ -51,7 +51,7 @@
               <span>Achievment</span>
             </a>
         </li>
-        <!-- End CTA Nav -->
+        <!-- End Achievment Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/blog">
@@ -59,7 +59,7 @@
               <span>Blog</span>
             </a>
         </li>
-        <!-- End Accreditation Nav -->
+        <!-- End News Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/accreditation">
@@ -84,6 +84,14 @@
             </a>
         </li>
         <!-- End Our Partner Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/organization">
+              <i class="bi bi-file-earmark"></i>
+              <span>Organization</span>
+            </a>
+        </li>
+        <!-- End Achievment Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
