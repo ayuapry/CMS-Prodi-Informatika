@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\web\AccreditationController;
+use App\Http\Controllers\web\AchievmentController;
 use App\Http\Controllers\web\BlogController;
 use App\Http\Controllers\web\CallToActionController;
 use App\Http\Controllers\web\HeroController;
@@ -93,12 +94,20 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::put("/laboratory/{id}", [LaboratoryController::class, "update"]);
         Route::get("/laboratory/{slug}/delete", [LaboratoryController::class, "destroy"]);
 
-         //Laboratory
-         Route::get("/teaching-staff", [TeachingStaffController::class, "index"]);
-         Route::get("/teaching-staff/add", [TeachingStaffController::class, "create"]);
-         Route::post("/teaching-staff", [TeachingStaffController::class, "store"]);
-         Route::get("/teaching-staff/{slug}/edit", [TeachingStaffController::class, "show"]);
-         Route::put("/teaching-staff/{id}", [TeachingStaffController::class, "update"]);
-         Route::get("/teaching-staff/{slug}/delete", [TeachingStaffController::class, "destroy"]);
+        //Laboratory
+        Route::get("/teaching-staff", [TeachingStaffController::class, "index"]);
+        Route::get("/teaching-staff/add", [TeachingStaffController::class, "create"]);
+        Route::post("/teaching-staff", [TeachingStaffController::class, "store"]);
+        Route::get("/teaching-staff/{slug}/edit", [TeachingStaffController::class, "show"]);
+        Route::put("/teaching-staff/{id}", [TeachingStaffController::class, "update"]);
+        Route::get("/teaching-staff/{slug}/delete", [TeachingStaffController::class, "destroy"]);
+
+        //Achievment
+        Route::get("/achievment", [AchievmentController::class, "index"]);
+        Route::get("/achievment/add", [AchievmentController::class, "create"]);
+        Route::post("/achievment", [AchievmentController::class, "store"]);
+        Route::get("/achievment/{slug}/edit", [AchievmentController::class, "show"]);
+        Route::put("/achievment/{id}", [AchievmentController::class, "update"]);
+        Route::get("/achievment/{slug}/delete", [AchievmentController::class, "destroy"]);
     }
 );

@@ -43,7 +43,15 @@
               <span>Call To Action</span>
             </a>
         </li>
-        <!-- End Accreditation Nav -->
+        <!-- End CTA Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/achievment">
+              <i class="bi bi-file-earmark"></i>
+              <span>Achievment</span>
+            </a>
+        </li>
+        <!-- End CTA Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/blog">
