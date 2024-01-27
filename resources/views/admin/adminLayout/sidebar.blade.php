@@ -70,6 +70,14 @@
         <!-- End Accreditation Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/about-us">
+              <i class="bi bi-file-earmark"></i>
+              <span>About Us</span>
+            </a>
+        </li>
+        <!-- End About Us Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/our-partner">
               <i class="bi bi-file-earmark"></i>
               <span>Our Partner</span>

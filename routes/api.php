@@ -28,4 +28,5 @@ Route::apiResource('/laboratories', App\Http\Controllers\api\LaboratoryControlle
 Route::apiResource('/teaching-staff', App\Http\Controllers\api\TeachingStaffController::class);
 Route::apiResource('/achievments', App\Http\Controllers\api\AchievmentController::class);
 Route::apiResource('/organizations', App\Http\Controllers\api\OrganizationController::class);
+Route::apiResource('/about-us', App\Http\Controllers\api\AboutUsController::class);
 

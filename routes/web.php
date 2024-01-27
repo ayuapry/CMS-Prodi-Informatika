@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\web\AboutUsController;
 use App\Http\Controllers\web\AccreditationController;
 use App\Http\Controllers\web\AchievmentController;
 use App\Http\Controllers\web\BlogController;
@@ -118,5 +119,13 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/organization/{id}/edit", [OrganizationController::class, "show"]);
         Route::put("/organization/{id}", [OrganizationController::class, "update"]);
         Route::get("/organization/{id}/delete", [OrganizationController::class, "destroy"]);
+
+        //About Us
+        Route::get("/about-us", [AboutUsController::class, "index"]);
+        Route::get("/about-us/add", [AboutUsController::class, "create"]);
+        Route::post("/about-us", [AboutUsController::class, "store"]);
+        Route::get("/about-us/{id}/edit", [AboutUsController::class, "show"]);
+        Route::put("/about-us/{id}", [AboutUsController::class, "update"]);
+        Route::get("/about-us/{id}/delete", [AboutUsController::class, "destroy"]);
     }
 );
