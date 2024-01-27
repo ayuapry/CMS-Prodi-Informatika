@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::apiResource('/heroes', App\Http\Controllers\Api\HeroController::class);
 Route::apiResource('/learnings', App\Http\Controllers\api\LearningController::class);
 Route::apiResource('/our-partners', App\Http\Controllers\api\OurPartnerController::class);
@@ -29,4 +25,4 @@ Route::apiResource('/teaching-staff', App\Http\Controllers\api\TeachingStaffCont
 Route::apiResource('/achievments', App\Http\Controllers\api\AchievmentController::class);
 Route::apiResource('/organizations', App\Http\Controllers\api\OrganizationController::class);
 Route::apiResource('/about-us', App\Http\Controllers\api\AboutUsController::class);
-
+Route::apiResource('/downloads', App\Http\Controllers\api\DownloadController::class);

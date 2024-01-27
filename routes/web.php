@@ -8,6 +8,7 @@ use App\Http\Controllers\web\AccreditationController;
 use App\Http\Controllers\web\AchievmentController;
 use App\Http\Controllers\web\BlogController;
 use App\Http\Controllers\web\CallToActionController;
+use App\Http\Controllers\web\DownloadController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LaboratoryController;
 use App\Http\Controllers\web\LearningController;
@@ -127,5 +128,13 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/about-us/{id}/edit", [AboutUsController::class, "show"]);
         Route::put("/about-us/{id}", [AboutUsController::class, "update"]);
         Route::get("/about-us/{id}/delete", [AboutUsController::class, "destroy"]);
+
+        //Download
+        Route::get("/download", [DownloadController::class, "index"]);
+        Route::get("/download/add", [DownloadController::class, "create"]);
+        Route::post("/download", [DownloadController::class, "store"]);
+        Route::get("/download/{id}/edit", [DownloadController::class, "show"]);
+        Route::put("/download/{id}", [DownloadController::class, "update"]);
+        Route::get("/download/{id}/delete", [DownloadController::class, "destroy"]);
     }
 );

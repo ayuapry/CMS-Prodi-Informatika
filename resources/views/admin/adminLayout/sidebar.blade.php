@@ -102,6 +102,14 @@
         <!-- End Achievment Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/download">
+              <i class="bi bi-file-earmark"></i>
+              <span>Download</span>
+            </a>
+        </li>
+        <!-- End Download Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Porto Category</span><i
                     class="bi bi-chevron-down ms-auto"></i>
