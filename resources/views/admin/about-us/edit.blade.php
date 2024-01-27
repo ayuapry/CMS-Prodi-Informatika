@@ -76,12 +76,11 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Misi</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('mision') is-invalid @enderror"
-                                        name="mision" value="{{ $about_us->mision }}">
+                                    <textarea class="form-control @error('mision') is-invalid @enderror" name="mision" id="mision">{{ $about_us->mision }}</textarea>
                                 </div>
                                 @error('mision')
                                     <div class="invalid-feedback">
-                                        Misi tidak boleh kosong
+                                        Mision tidak boleh kosong
                                     </div>
                                 @enderror
                             </div>
@@ -118,5 +117,6 @@
     <script>
         CKEDITOR.replace('content');
         CKEDITOR.replace('selayang');
+        CKEDITOR.replace('mision');
     </script>
 @endsection

@@ -31,7 +31,7 @@
                                         name="image">
                                 </div>
                             </div>
-                            
+
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Judul</label>
                                 <div class="col-sm-10">
@@ -86,12 +86,12 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Misi</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('mision') is-invalid @enderror"
-                                        name="mision">
+                                    <textarea type="text" class="form-control @error('mision') is-invalid @enderror"
+                                        name="mision"></textarea>
                                 </div>
                                 @error('mision')
                                     <div class="invalid-feedback">
-                                        Mision tidak boleh kosong
+                                        Deskripsi tidak boleh kosong
                                     </div>
                                 @enderror
                             </div>
@@ -124,5 +124,6 @@
     <script>
         CKEDITOR.replace('content');
         CKEDITOR.replace('selayang');
+        CKEDITOR.replace('vision');
     </script>
 @endsection
