@@ -70,6 +70,14 @@
         <!-- End Accreditation Nav -->
 
         <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/riset">
+              <i class="bi bi-file-earmark"></i>
+              <span>Risets</span>
+            </a>
+        </li>
+        <!-- End Accreditation Nav -->
+
+        <li class="nav-item">
             <a class="nav-link collapsed" href="/admin/about-us">
               <i class="bi bi-file-earmark"></i>
               <span>About Us</span>

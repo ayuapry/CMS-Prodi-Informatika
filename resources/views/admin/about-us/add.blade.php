@@ -124,6 +124,6 @@
     <script>
         CKEDITOR.replace('content');
         CKEDITOR.replace('selayang');
-        CKEDITOR.replace('vision');
+        CKEDITOR.replace('mision');
     </script>
 @endsection

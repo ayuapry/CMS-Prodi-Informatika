@@ -26,3 +26,4 @@ Route::apiResource('/achievments', App\Http\Controllers\api\AchievmentController
 Route::apiResource('/organizations', App\Http\Controllers\api\OrganizationController::class);
 Route::apiResource('/about-us', App\Http\Controllers\api\AboutUsController::class);
 Route::apiResource('/downloads', App\Http\Controllers\api\DownloadController::class);
+Route::apiResource('/risets', App\Http\Controllers\api\RisetController::class);

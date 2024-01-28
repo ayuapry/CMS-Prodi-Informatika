@@ -14,6 +14,7 @@ use App\Http\Controllers\web\LaboratoryController;
 use App\Http\Controllers\web\LearningController;
 use App\Http\Controllers\web\OrganizationController;
 use App\Http\Controllers\web\OurPartnerController;
+use App\Http\Controllers\web\RisetController;
 use App\Http\Controllers\web\TeachingStaffController;
 
 /*
@@ -136,5 +137,13 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::get("/download/{id}/edit", [DownloadController::class, "show"]);
         Route::put("/download/{id}", [DownloadController::class, "update"]);
         Route::get("/download/{id}/delete", [DownloadController::class, "destroy"]);
+
+        //Download
+        Route::get("/riset", [RisetController::class, "index"]);
+        Route::get("/riset/add", [RisetController::class, "create"]);
+        Route::post("/riset", [RisetController::class, "store"]);
+        Route::get("/riset/{id}/edit", [RisetController::class, "show"]);
+        Route::put("/riset/{id}", [RisetController::class, "update"]);
+        Route::get("/riset/{id}/delete", [RisetController::class, "destroy"]);
     }
 );
