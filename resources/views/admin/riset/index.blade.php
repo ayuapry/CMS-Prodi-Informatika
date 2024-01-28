@@ -38,7 +38,7 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $riset->name }}</td>    
                                 <td>{{ $riset->type }}</td>    
-                                <td>{{ $riset->research_title }}</td>    
+                                <td>{{ \Illuminate\Support\Str::limit($riset->research_title, 20) }}</td>
                                 <td>
                                     <a href="/admin/riset/{{ $riset->id }}/edit" class="btn btn-warning"><i class="bi bi-pencil-fill text-white"></i></a>
                                     <a href="/admin/riset/{{ $riset->id }}/delete" class="btn btn-danger"><i class="bi bi-trash3-fill text-white"></i></a>
