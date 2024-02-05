@@ -53,8 +53,8 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your username & password to login</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Login to PSIF ITI</h5>
+                    <p class="text-center small">Masukkan username & password untuk Masuk</p>
                   </div>
 
                   <form class="row g-3 needs-validation" method="POST" action="{{ route('login') }}" novalidate>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button class="btn btn-primary w-100" type="submit">Masuk</button>
                     </div>
                   </form>
 
