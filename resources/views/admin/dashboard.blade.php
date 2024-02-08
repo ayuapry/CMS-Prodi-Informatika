@@ -76,59 +76,35 @@
                 <div class="card recent-sales overflow-auto">
   
                   <div class="card-body">
-                    <h5 class="card-title">Berita Terkini</h5>
-  
+                    <div class="d-flex align-items-center gap-4">
+                        <h5 class="card-title">Berita Terkini</h5> 
+                        <a type="button" class="" href="/admin/blog/add"><i class="bi bi-plus-lg me-1"></i>Tambah Berita Terbaru Disini</a>
+                    </div>
                     <table class="table table-borderless datatable">
                       <thead>
                         <tr>
-                          <th scope="col">#</th>
-                          <th scope="col">Customer</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Status</th>
+                            <th scope="col">No</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Attachment</th>
+                            <th scope="col">Action</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($blogs as $blog)
                         <tr>
-                          <th scope="row"><a href="#">#2457</a></th>
-                          <td>Brandon Jacob</td>
-                          <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                          <td>$64</td>
-                          <td><span class="badge bg-success">Approved</span></td>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ \Illuminate\Support\Str::limit($blog->title, 20) }}</td>
+                            <td>{{ \Illuminate\Support\Str::limit($blog->description, 20) }}</td>
+                            <td><img src="{{ asset('storage/blogs/' . basename($blog->image)) }}" alt="" style="height:40px; width:60px; object-fit: cover; rounded"></td>
+                            <td><a href="/admin/blog/{{ $blog->id }}/edit" class="btn btn-warning"><i class="bi bi-pencil-fill text-white"></i></a>
+                                <a href="/admin/blog/{{ $blog->id }}/delete" class="btn btn-danger"><i class="bi bi-trash3-fill text-white"></i></a>
+                            </td>
                         </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2147</a></th>
-                          <td>Bridie Kessler</td>
-                          <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                          <td>$47</td>
-                          <td><span class="badge bg-warning">Pending</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2049</a></th>
-                          <td>Ashleigh Langosh</td>
-                          <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                          <td>$147</td>
-                          <td><span class="badge bg-success">Approved</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2644</a></th>
-                          <td>Angus Grady</td>
-                          <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                          <td>$67</td>
-                          <td><span class="badge bg-danger">Rejected</span></td>
-                        </tr>
-                        <tr>
-                          <th scope="row"><a href="#">#2644</a></th>
-                          <td>Raheem Lehner</td>
-                          <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                          <td>$165</td>
-                          <td><span class="badge bg-success">Approved</span></td>
-                        </tr>
-                      </tbody>
+                        @endforeach
+                    </tbody>
                     </table>
-  
                   </div>
-  
                 </div>
               </div><!-- End Recent Sales -->
 
@@ -143,8 +119,8 @@
                                         <i class="bi bi-person-plus-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6 class="pb-2">{{ $our_partners }} Partner</h6>
-                                        <a type="button" class="btn btn-primary" href="/admin/our-partner/add"><i class="bi bi-plus-lg me-1"></i>Tambah Data Prestasi</a>
+                                        <h6 class="pb-2">{{ $achievments }} Prestasi</h6>
+                                        <a type="button" class="btn btn-primary" href="/admin/achievment/add"><i class="bi bi-plus-lg me-1"></i>Tambah Data Prestasi</a>
                                     </div>
                                 </div>
                             </div>
@@ -156,15 +132,15 @@
                     <div class="col-xxl-4 col-md-6">
                         <div class="card info-card revenue-card">
                             <div class="card-body">
-                                <h5 class="card-title">Dosen PSIF ITI</h5>
+                                <h5 class="card-title">Riset</h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-book"></i>
+                                        <i class="bi bi-rocket-takeoff"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6 class="pb-2">{{ $teaching_staff }} Dosen</h6>
-                                        <a type="button" class="btn btn-primary" href="/admin/teaching-staff/add"><i class="bi bi-plus-lg me-1"></i>Tambah Data Dosen</a>
+                                        <h6 class="pb-2">{{ $risets }} Riset</h6>
+                                        <a type="button" class="btn btn-primary" href="/admin/riset/add"><i class="bi bi-plus-lg me-1"></i>Tambah Data Riset</a>
                                     </div>
                                 </div>
                             </div>
@@ -176,15 +152,15 @@
                     <div class="col-xxl-4 col-xl-12">
                         <div class="card info-card customers-card">
                             <div class="card-body">
-                                <h5 class="card-title">Laboratorium</h5>
+                                <h5 class="card-title">Unduhan</h5>
 
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-bookmarks"></i>
+                                        <i class="bi bi-file-earmark-arrow-down-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6 class="pb-2">{{ $laboratories}} Laboratorium</h6>
-                                        <a type="button" class="btn btn-primary" href="/admin/laboratory/add"><i class="bi bi-plus-lg me-1"></i>Tambah Data Lab</a>
+                                        <h6 class="pb-2">{{ $downloads}} Unduhan</h6>
+                                        <a type="button" class="btn btn-primary" href="/admin/download/add"><i class="bi bi-plus-lg me-1"></i>Tambah Data Unduhan</a>
                                     </div>
                                 </div>
                             </div>
