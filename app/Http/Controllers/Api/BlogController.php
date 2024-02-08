@@ -19,7 +19,7 @@ class BlogController extends Controller
     public function index()
     {
         //get all posts
-        $blogs = Blog::latest()->paginate(5);
+        $blogs = Blog::latest()->paginate(8);
 
         //return collection of accreditations as a resource
         return new BlogResource(true, 'List Data Blog', $blogs);

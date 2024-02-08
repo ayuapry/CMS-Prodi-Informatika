@@ -27,3 +27,6 @@ Route::apiResource('/organizations', App\Http\Controllers\api\OrganizationContro
 Route::apiResource('/about-us', App\Http\Controllers\api\AboutUsController::class);
 Route::apiResource('/downloads', App\Http\Controllers\api\DownloadController::class);
 Route::apiResource('/risets', App\Http\Controllers\api\RisetController::class);
+Route::apiResource('/menus', App\Http\Controllers\api\MenuController::class);
+Route::apiResource('/sub-menus', App\Http\Controllers\api\SubMenuController::class);
+

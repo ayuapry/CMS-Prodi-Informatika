@@ -18,7 +18,7 @@ class DownloadController extends Controller
     public function index()
     {
         //get all posts
-        $downloads = Download::latest()->paginate(5);
+        $downloads = Download::latest()->paginate(10);
 
         //return collection of download as a resource
         return new DownloadResource(true, 'List Data Downloads', $downloads);

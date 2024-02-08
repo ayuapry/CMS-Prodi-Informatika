@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\web\PageController;
 use App\Http\Controllers\web\AboutUsController;
 use App\Http\Controllers\web\AccreditationController;
 use App\Http\Controllers\web\AchievmentController;
@@ -12,10 +12,13 @@ use App\Http\Controllers\web\DownloadController;
 use App\Http\Controllers\web\HeroController;
 use App\Http\Controllers\web\LaboratoryController;
 use App\Http\Controllers\web\LearningController;
+use App\Http\Controllers\web\MenuController;
 use App\Http\Controllers\web\OrganizationController;
 use App\Http\Controllers\web\OurPartnerController;
 use App\Http\Controllers\web\RisetController;
+use App\Http\Controllers\web\SubMenuController;
 use App\Http\Controllers\web\TeachingStaffController;
+use App\Models\Riset;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,12 +141,28 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
         Route::put("/download/{id}", [DownloadController::class, "update"]);
         Route::get("/download/{id}/delete", [DownloadController::class, "destroy"]);
 
-        //Download
+        //Riset
         Route::get("/riset", [RisetController::class, "index"]);
         Route::get("/riset/add", [RisetController::class, "create"]);
         Route::post("/riset", [RisetController::class, "store"]);
         Route::get("/riset/{id}/edit", [RisetController::class, "show"]);
         Route::put("/riset/{id}", [RisetController::class, "update"]);
         Route::get("/riset/{id}/delete", [RisetController::class, "destroy"]);
+
+        //Menu
+        Route::get("/menu", [MenuController::class, "index"]);
+        Route::get("/menu/add", [MenuController::class, "create"]);
+        Route::post("/menu", [MenuController::class, "store"]);
+        Route::get("/menu/{id}/edit", [MenuController::class, "show"]);
+        Route::put("/menu/{id}", [MenuController::class, "update"]);
+        Route::get("/menu/{id}/delete", [MenuController::class, "destroy"]);
+
+         //Sub Menu
+         Route::get("/sub-menu", [SubMenuController::class, "index"]);
+         Route::get("/sub-menu/add", [SubMenuController::class, "create"]);
+         Route::post("/sub-menu", [SubMenuController::class, "store"]);
+         Route::get("/sub-menu/{id}/edit", [SubMenuController::class, "show"]);
+         Route::put("/sub-menu/{id}", [SubMenuController::class, "update"]);
+         Route::get("/sub-menu/{id}/delete", [SubMenuController::class, "destroy"]);
     }
 );

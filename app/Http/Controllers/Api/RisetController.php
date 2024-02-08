@@ -18,7 +18,7 @@ class RisetController extends Controller
     public function index()
     {
         //get all posts
-        $risets = Riset::latest()->paginate(5);
+        $risets = Riset::latest()->paginate(10);
 
         //return collection of call$call_to_action as a resource
         return new RisetResource(true, 'List Data Riset', $risets);

@@ -44,78 +44,40 @@ class OurPartnerController extends Controller
         return view('admin.our-partner.edit', ['our_partners' => $our_partners]);
     }
 
-    // public function update(Request $request, string $id)
-    // {
-    //     $this->validate($request, [
-    //         'image'     => 'mimes:jpeg,jpg,png',
-    //         'title'     => 'string',
-    //     ]);
-
-    //     //get post by ID
-    //     $our_partners = OurPartner::findOrFail($id);
-
-    //     //check if image is uploaded
-    //     if ($request->hasFile('image')) {
-
-    //         //upload new image
-    //         $image = $request->file('image');
-    //         $image->storeAs('public/our-partner', $image->hashName());
-
-    //         //delete old image
-    //         Storage::delete('public/our-partner/'.$our_partners->image);
-
-    //         //update post with new image
-    //         $our_partners->update([
-    //             'image'     => $image->hashName(),
-    //             'title'     => $request->title,
-    //         ]);
-
-    //     } else {
-
-    //         //update post without image
-    //         $our_partners->update([
-    //             'title'     => $request->title,
-    //             'description'   => $request->description
-    //         ]);
-    //     }
-
-    //     return redirect('/admin/our-partner');
-    // }
-
     public function update(Request $request, string $id)
-{
-    $this->validate($request, [
-        'image' => 'mimes:jpeg,jpg,png',
-        'title' => 'string',
-    ]);
-
-    // get post by ID
-    $our_partner = OurPartner::findOrFail($id);
-
-    // check if image is uploaded
-    if ($request->hasFile('image')) {
-        // upload new image
-        $image = $request->file('image');
-        $image->storeAs('public/our-partner', $image->hashName());
-
-        // delete old image
-        Storage::delete('public/our-partner/'.$our_partner->image);
-
-        // update post with new image
-        $our_partner->update([
-            'image' => $image->hashName(),
-            'title' => $request->title,
+    {
+        $this->validate($request, [
+            'image' => 'mimes:jpeg,jpg,png',
+            'title' => 'string',
         ]);
-    } else {
-        // update post without image
-        $our_partner->update([
-            'title' => $request->title,
-            'description' => $request->description
-        ]);
+
+        // get post by ID
+        $our_partner = OurPartner::findOrFail($id);
+
+        // check if image is uploaded
+        if ($request->hasFile('image')) {
+            // upload new image
+            $image = $request->file('image');
+            $image->storeAs('public/our-partner', $image->hashName());
+
+            // delete old image
+            Storage::delete('public/our-partner/'.$our_partner->image);
+
+            // update post with new image
+            $our_partner->update([
+                'image' => $image->hashName(),
+                'title' => $request->title,
+            ]);
+        } else {
+            // update post without image
+            $our_partner->update([
+                'title' => $request->title,
+                'description' => $request->description
+            ]);
+        }
+
+        return redirect('/admin/our-partner');
     }
-
-    return redirect('/admin/our-partner');
-}
 
 
     public function destroy(string $id)

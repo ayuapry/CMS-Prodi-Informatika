@@ -19,10 +19,10 @@ class AchievmentController extends Controller
     public function index()
     {
         //get all posts
-        $achievments = Achievment::latest()->paginate(5);
+        $achievments = Achievment::latest()->paginate(6);
 
         //return collection of accreditations as a resource
-        return new AchievmentResource(true, 'List Data Blog', $achievments);
+        return new AchievmentResource(true, 'List Data Prestasi', $achievments);
     }
     
     /**
@@ -63,7 +63,7 @@ class AchievmentController extends Controller
     public function show($id)
     {
         $achievments = Achievment::find($id);
-        return new AchievmentResource(true, 'Detail Data Blog!', $achievments);
+        return new AchievmentResource(true, 'Detail Data Prestasi!', $achievments);
     }
 
     public function update(Request $request, $id)
