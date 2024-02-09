@@ -20,7 +20,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Data Call To Action</h5>
-                    <a type="button" class="btn btn-primary m-2" href="/admin/call-to-action/add"><i class="bi bi-plus-square-fill"></i> Tambah Data CTA</a>
+                    @if ($call_to_actions -> isEmpty()) 
+                        <a type="button" class="btn btn-primary m-2" href="/admin/call-to-action/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Call To Action</a>
+                    @else
+                        <a type="button" class="btn btn-primary m-2 disabled" href="/admin/call-to-action/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Call To Action</a>
+                    @endif
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

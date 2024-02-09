@@ -39,9 +39,9 @@
                                 @enderror
                             </div>
                             <div class="row mb-3">
-                                <label for="inputText" class="col-sm-2 col-form-label">Deskripsi Singkat</label>
+                                <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ $blog->description }}">
+                                    <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description">{{ $blog->description }}</textarea>
                                 </div>
                                 @error('description')
                                     <div class="invalid-feedback">
@@ -56,6 +56,18 @@
                                         name="image">
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Kategori Blog</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select @error('blogcategory_id') is-invalid @enderror"
+                                        aria-label="Default select example" name="blogcategory_id">
+                                        <option selected>{{ $blog->blogcategory->name }}</option>
+                                        @foreach ($blogcategories  as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class=" mb-3" style='float: right;'>
                                 <button type="submit" class="btn btn-primary">Submit Form</button>
                                 <div class="col-sm-10">
@@ -67,10 +79,8 @@
             </div>
         </div>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('content');
+        CKEDITOR.replace('description');
     </script>
 @endsection

@@ -20,7 +20,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Data Banner</h5>
-                    <a type="button" class="btn btn-primary m-2" href="/admin/hero/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Banner</a>
+                    @if ($heroes -> isEmpty()) 
+                        <a type="button" class="btn btn-primary m-2" href="/admin/hero/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Banner</a>
+                    @else
+                        <a type="button" class="btn btn-primary m-2 disabled" href="/admin/hero/add"><i class="bi bi-plus-square-fill"></i> Tambah Data Banner</a>
+                    @endif
                     <!-- Table with stripped rows -->
                     <table class="table datatable">
                         <thead>

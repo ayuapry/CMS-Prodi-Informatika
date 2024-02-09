@@ -49,6 +49,7 @@ class BlogController extends Controller
     public function show(string $id)
     {
         $blogs = Blog::with('blogcategory')->findOrFail($id);
+        $blogcategories = BlogCategory::all();
         return view('admin.blog.edit', ['blog' => $blogs, 'blogcategories' => $blogcategories]);
     }
 

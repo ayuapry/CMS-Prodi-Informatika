@@ -39,12 +39,12 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Deskripsi</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control @error('description') is-invalid @enderror"
-                                        name="description">
+                                    <textarea type="text" id="description" class="form-control @error('description') is-invalid @enderror"
+                                        name="description"></textarea>
                                 </div>
                                 @error('description')
                                     <div class="invalid-feedback">
-                                        Deskripsi tidak boleh kosong
+                                        description tidak boleh kosong
                                     </div>
                                 @enderror
                             </div>
@@ -80,7 +80,8 @@
             </div>
         </div>
     </section>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('description');
+    </script>
 @endsection
