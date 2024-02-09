@@ -71,7 +71,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="/admin/blog-category">
             <i class="bi bi-file-earmark"></i>
-            <span>Blog Category</span>
+            <span>Blog Kategori</span>
           </a>
         </li>
         <!-- End News Nav -->
@@ -79,7 +79,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="/admin/blog">
             <i class="bi bi-file-earmark"></i>
-            <span>Blog/News</span>
+            <span>Blog</span>
           </a>
         </li>
         <!-- End News Nav -->
