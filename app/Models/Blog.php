@@ -14,6 +14,7 @@ class Blog extends Model
         'image',
         'title',
         'description',
+        'blogcategory_id'
     ];
 
     protected function image(): Attribute
@@ -21,5 +22,10 @@ class Blog extends Model
         return Attribute::make(
             get: fn ($image) => asset('storage/blogs/' .$image),
         );
+    }
+
+    public function blogcategory()
+    {
+        return $this->belongsTo(BlogCategory::class, 'blogcategory_id');
     }
 }

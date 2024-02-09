@@ -20,6 +20,7 @@ Route::apiResource('/our-partners', App\Http\Controllers\api\OurPartnerControlle
 Route::apiResource('/accreditations', App\Http\Controllers\api\AccreditationController::class);
 Route::apiResource('/call_to_actions', App\Http\Controllers\api\CallToActionController::class);
 Route::apiResource('/blogs', App\Http\Controllers\api\BlogController::class);
+Route::apiResource('/blog-categories', App\Http\Controllers\api\BlogCategoryController::class);
 Route::apiResource('/laboratories', App\Http\Controllers\api\LaboratoryController::class);
 Route::apiResource('/teaching-staff', App\Http\Controllers\api\TeachingStaffController::class);
 Route::apiResource('/achievments', App\Http\Controllers\api\AchievmentController::class);

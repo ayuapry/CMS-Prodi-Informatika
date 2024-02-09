@@ -14,8 +14,4 @@ class SubMenuController extends Controller
         $submenus = SubMenu::all();
         return new SubMenuResource(true, 'List Data SubMenu', $submenus);
     }
-
-    
-
-
 }

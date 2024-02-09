@@ -55,6 +55,19 @@
                                         name="image">
                                 </div>
                             </div>
+
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Blog Category</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select @error('blogcategory_id') is-invalid @enderror"
+                                        aria-label="Default select example" name="blogcategory_id">
+                                        <option selected>Pilih Kategori</option>
+                                        @foreach ($blogcategories as $blogcategory)
+                                            <option value="{{ $blogcategory->id }}">{{ $blogcategory->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
             
                             <div class=" mb-3" style='float: right;'>
                                 <button type="submit" class="btn btn-primary">Submit Form</button>

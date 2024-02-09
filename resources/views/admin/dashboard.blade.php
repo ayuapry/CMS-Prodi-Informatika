@@ -86,7 +86,7 @@
                             <th scope="col">No</th>
                             <th scope="col">Title</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Attachment</th>
+                            <th scope="col">Kategori</th>
                             <th scope="col">Action</th>
                         </tr>
                       </thead>
@@ -96,7 +96,8 @@
                             <th scope="row">{{ $loop->iteration }}</th>
                             <td>{{ \Illuminate\Support\Str::limit($blog->title, 20) }}</td>
                             <td>{{ \Illuminate\Support\Str::limit($blog->description, 20) }}</td>
-                            <td><img src="{{ asset('storage/blogs/' . basename($blog->image)) }}" alt="" style="height:40px; width:60px; object-fit: cover; rounded"></td>
+                            <td>{{ $blog->blogcategory->name }}</td>
+                            {{-- <td><img src="{{ asset('storage/blogs/' . basename($blog->image)) }}" alt="" style="height:40px; width:60px; object-fit: cover; rounded"></td> --}}
                             <td><a href="/admin/blog/{{ $blog->id }}/edit" class="btn btn-warning"><i class="bi bi-pencil-fill text-white"></i></a>
                                 <a href="/admin/blog/{{ $blog->id }}/delete" class="btn btn-danger"><i class="bi bi-trash3-fill text-white"></i></a>
                             </td>

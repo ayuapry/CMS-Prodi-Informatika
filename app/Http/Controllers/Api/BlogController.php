@@ -12,16 +12,13 @@ use Illuminate\Support\Facades\Validator;
 class BlogController extends Controller
 {
      /**
-     * index
+     * index 
      *
      * @return void
      */
     public function index()
     {
-        //get all posts
-        $blogs = Blog::latest()->paginate(8);
-
-        //return collection of accreditations as a resource
+        $blogs = Blog::with('blogcategory')->get();
         return new BlogResource(true, 'List Data Blog', $blogs);
     }
     

@@ -6,6 +6,7 @@ use App\Http\Controllers\web\PageController;
 use App\Http\Controllers\web\AboutUsController;
 use App\Http\Controllers\web\AccreditationController;
 use App\Http\Controllers\web\AchievmentController;
+use App\Http\Controllers\web\BlogCategoryController;
 use App\Http\Controllers\web\BlogController;
 use App\Http\Controllers\web\CallToActionController;
 use App\Http\Controllers\web\DownloadController;
@@ -164,5 +165,14 @@ Route::prefix('admin')->middleware(['auth:web'])->group(
          Route::get("/sub-menu/{id}/edit", [SubMenuController::class, "show"]);
          Route::put("/sub-menu/{id}", [SubMenuController::class, "update"]);
          Route::get("/sub-menu/{id}/delete", [SubMenuController::class, "destroy"]);
+
+        //Blog Category
+        Route::get("/blog-category", [BlogCategoryController::class, "index"]);
+        Route::get("/blog-category/add", [BlogCategoryController::class, "create"]);
+        Route::post("/blog-category", [BlogCategoryController::class, "store"]);
+        Route::get("/blog-category/{id}/edit", [BlogCategoryController::class, "show"]);
+        Route::put("/blog-category/{id}", [BlogCategoryController::class, "update"]);
+        Route::get("/blog-category/{id}/delete", [BlogCategoryController::class, "destroy"]);
+
     }
 );

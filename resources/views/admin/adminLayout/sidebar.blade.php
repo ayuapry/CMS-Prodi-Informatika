@@ -69,6 +69,14 @@
         <!-- End Accreditation Nav -->
 
         <li class="nav-item">
+          <a class="nav-link collapsed" href="/admin/blog-category">
+            <i class="bi bi-file-earmark"></i>
+            <span>Blog Category</span>
+          </a>
+        </li>
+        <!-- End News Nav -->
+
+        <li class="nav-item">
           <a class="nav-link collapsed" href="/admin/blog">
             <i class="bi bi-file-earmark"></i>
             <span>Blog/News</span>
