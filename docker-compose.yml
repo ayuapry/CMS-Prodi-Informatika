@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+  cms:
+    container_name: cms
+    build: .
+    expose:
+      - 9000
+    volumes:
+      - .:/usr/src/app
+      - ./public:/usr/src/app/public
+    depends_on:
+      - cms_db
+    networks:
+      - app_network
+
+  cms_nginx:
+    container_name: cms_nginx
+    build:
+      context: .
+      dockerfile: ./Dockerfile-nginx
+    volumes:
+    - ./public:/usr/src/app/public
+    ports:
+      - 3001:80
+    depends_on:
+      - cms
+    environment:
+      NGINX_FPM_HOST: cms
+      NGINX_ROOT: /usr/src/app/public
+    networks:
+      - app_network
+
+  cms_db:
+    container_name: cms_db
+    image: mysql:8.0.20
+    restart: always
+    volumes:
+      - ./storage/db-data:/var/lib/mysql
+    ports:
+      - 2999:3306
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: 12345678
+    networks:
+      - app_network
+
+  # blog_redis:
+  #   container_name: blog_redis
+  #   image: redis:latest
+  #   ports:
+  #     - 6379:6379
+  #   networks:
+  #     - app_network
+
+networks:
+  app_network:
+    driver: bridge
