@@ -80,7 +80,7 @@ class BlogController extends Controller
                 'image'         => $image->hashName(),
                 'title'         => $request->title,
                 'description'   => $request->description,
-                'blogcategory_id' => $request->blogcategory_id
+                // 'blogcategory_id' => $request->blogcategory_id
             ]);
 
         } else {
@@ -89,7 +89,7 @@ class BlogController extends Controller
             $blogs->update([
                 'title'         => $request->title,
                 'description'   => $request->description,
-                'blogcategory_id' => $request->blogcategory_id
+                // 'blogcategory_id' => $request->blogcategory_id
             ]);
         }
 

@@ -48,7 +48,7 @@ class SubMenuController extends Controller
     {
         $this->validate($request, [
             'name'              => 'string',
-            'menu_id'           => 'required'
+            'menu_id'           => 'integer'
         ]);
 
         $submenus = SubMenu::find($id);

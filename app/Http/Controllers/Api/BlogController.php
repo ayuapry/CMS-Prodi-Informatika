@@ -18,7 +18,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::with('blogcategory')->get();
+        $blogs = Blog::with('blogcategory')->paginate(6);
         return new BlogResource(true, 'List Data Blog', $blogs);
     }
     

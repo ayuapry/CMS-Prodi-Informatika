@@ -1,15 +1,15 @@
 @extends('admin.adminLayout.app')
 
-@section('title', 'Edit Menu')
+@section('title', 'Edit Blog Kategori')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Edit Menu</h1>
+        <h1>Edit Blog Kategori</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin/dashboard">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="/admin/menu">Menu</a></li>
-                <li class="breadcrumb-item active">Edit Menu</li>
+                <li class="breadcrumb-item"><a href="/admin/blog-category">Blog Kategori</a></li>
+                <li class="breadcrumb-item active">Edit Blog Kategori</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -20,17 +20,17 @@
 
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Edit Menu</h5>
+                        <h5 class="card-title">Edit Blog Kategori</h5>
 
                         <!-- General Form Elements -->
-                        <form action="/admin/menu/{{ $menus->id }}" method="POST" enctype="multipart/form-data">
+                        <form action="/admin/blog-category/{{ $blogcategories->id }}" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                        name="name" value="{{ $menus->name }}">
+                                        name="name" value="{{ $blogcategories->name }}">
                                 </div>
                                 @error('name')
                                     <div class="invalid-feedback">
