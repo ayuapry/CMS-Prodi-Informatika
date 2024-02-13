@@ -8,12 +8,12 @@ RUN curl -s -f -L -o /tmp/dockerize.tar.gz https://github.com/jwilder/dockerize/
     && rm /tmp/dockerize.tar.gz
 
 # Install Composer
-ENV COMPOSER_VERSION 2.1.5
+ENV COMPOSER_VERSION 2.6.4
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=$COMPOSER_VERSION
 
 # Install nodejs
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
