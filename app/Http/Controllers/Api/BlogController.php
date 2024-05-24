@@ -16,9 +16,13 @@ class BlogController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::with('blogcategory')->paginate(6);
+        $sortOrder = $request->query('sort', 'DESC');
+
+        $blogs = Blog::with('blogcategory')
+        ->orderBy('created_at',$sortOrder)
+        ->paginate(6);
         return new BlogResource(true, 'List Data Blog', $blogs);
     }
     
