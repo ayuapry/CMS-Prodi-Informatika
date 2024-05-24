@@ -15,12 +15,17 @@ class RisetController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
-        //get all posts
-        $risets = Riset::latest()->paginate(10);
+        $query = $request->input('query');
+        $risets = Riset::query()
+            ->where('name', 'LIKE', "%{$query}%")
+            ->orWhere('research_title', 'LIKE', "%{$query}%")
+            ->orWhere('year', 'LIKE', "%{$query}%")
+            ->orWhere('type', 'LIKE', "%{$query}%")
+            ->latest()
+            ->paginate(10);
 
-        //return collection of call$call_to_action as a resource
         return new RisetResource(true, 'List Data Riset', $risets);
     }
 
