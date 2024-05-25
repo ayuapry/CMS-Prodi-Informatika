@@ -15,10 +15,18 @@ class DownloadController extends Controller
      *
      * @return void
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query = $request->input('query');
+        $sortOrder = $request->query('sort', 'DESC');
+
         //get all posts
-        $downloads = Download::latest()->paginate(10);
+        $downloads = Download::query()
+        ->where('title', 'LIKE', "%{$query}%")
+        ->orWhere('description', 'LIKE', "%{$query}%")
+        ->orderBy('created_at', $sortOrder)
+        ->latest()
+        ->paginate(10);
 
         //return collection of download as a resource
         return new DownloadResource(true, 'List Data Downloads', $downloads);
